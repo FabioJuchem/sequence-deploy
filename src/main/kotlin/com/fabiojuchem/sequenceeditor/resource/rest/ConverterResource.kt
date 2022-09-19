@@ -16,6 +16,7 @@ class ConverterResource(
     private val aminoacidConverterService: AminoacidConverterService
 ) {
 
+    @CrossOrigin
     @PostMapping("/convert/{type}", produces = [MediaType.APPLICATION_JSON_VALUE] )
     fun convert(
         @RequestBody input: Input,
@@ -24,6 +25,7 @@ class ConverterResource(
     ) =
         converterService.convert(input, type, options)
 
+    @CrossOrigin
     @PostMapping("/convert/aminoacid", produces = [MediaType.APPLICATION_JSON_VALUE] )
     fun convertAminoacid(
         @RequestBody input: Input,

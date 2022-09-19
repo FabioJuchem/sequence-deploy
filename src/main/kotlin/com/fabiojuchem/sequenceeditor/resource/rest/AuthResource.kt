@@ -15,15 +15,18 @@ class AuthResource(
     val userService: UserService,
 ) {
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     fun createUser(@RequestBody @Valid dto: UserDto) = userService.createUser(dto)
     //TODO verificar porque o @Valid não esta funcionando
 
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/login")
     fun login(@RequestBody dto: LoginDto) = userService.login(dto)
 
+    @CrossOrigin
     @GetMapping("/user")
     fun getUserData(): Mono<UserDetailsDto> {
         return userService.findUserByToken()
